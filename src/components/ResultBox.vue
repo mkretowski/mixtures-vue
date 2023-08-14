@@ -17,7 +17,7 @@
       :size="4"
       :movement="-0.5"
       :font-size="1.5"
-      icon="fa-sync"
+      icon="pi-sync"
     />
 
     <!-- about btn -->
@@ -26,7 +26,7 @@
       :size="4"
       :movement="-0.5"
       :font-size="1.5"
-      icon="fa-question"
+      icon="pi-question"
     />
     <!-- about modal -->
     <modal-item v-if="modalVisible" @cancel="hideModal">
@@ -36,7 +36,7 @@
         Mix three colors to create the perfect one!
       </template>
 
-      <template v-slot:footer> <button-item icon="fa-thumbs-up" /> </template>
+      <template v-slot:footer> <button-item icon="pi-thumbs-up" /> </template>
     </modal-item>
   </div>
 </template>

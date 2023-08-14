@@ -4,7 +4,7 @@
     <button-item
       v-if="buttonsVisible"
       class="flask__btn flask__btn--left"
-      icon="fa-arrow-down"
+      icon="pi-arrow-down"
       @click="$emit('decrement')"
     />
 
@@ -14,7 +14,7 @@
     <button-item
       v-if="buttonsVisible"
       class="flask__btn flask__btn--right"
-      icon="fa-arrow-up"
+      icon="pi-arrow-up"
       :movement="-0.5"
       @click="$emit('increment')"
     />

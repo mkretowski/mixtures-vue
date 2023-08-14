@@ -1,29 +1,30 @@
 <template>
   <div id="app">
     <div class="container">
-
+      <!-- menu -->
+      <app-menu />
       <!-- header -->
       <app-header />
 
       <!-- color mixin -->
       <color-mixin />
-
     </div>
   </div>
 </template>
 
 <script>
-import './styles/global.scss'
-import AppHeader from './components/AppHeader'
-import ColorMixin from './components/ColorMixin'
-
+import "./styles/global.scss";
+import AppHeader from "./components/AppHeader";
+import ColorMixin from "./components/ColorMixin";
+import AppMenu from "./components/AppMenu.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     AppHeader,
-    ColorMixin
-  }
-}
+    ColorMixin,
+    AppMenu,
+  },
+};
 </script>
 
 <style lang="scss">
