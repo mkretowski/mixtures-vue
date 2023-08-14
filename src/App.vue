@@ -5,9 +5,8 @@
       <app-menu />
       <!-- header -->
       <app-header />
-
-      <!-- color mixin -->
-      <color-mixin />
+      <!-- router view -->
+      <router-view />
     </div>
   </div>
 </template>

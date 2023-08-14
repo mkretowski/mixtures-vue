@@ -13,14 +13,17 @@ export default {
       {
         label: "Home",
         icon: "pi pi-fw pi-home",
+        to: "/",
       },
       {
         label: "Mixin",
         icon: "pi pi-fw pi-sync",
+        to: "/mixin",
       },
       {
         label: "About",
         icon: "pi pi-fw pi-info-circle",
+        to: "about",
       },
     ],
   }),
