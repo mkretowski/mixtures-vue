@@ -1,6 +1,10 @@
 <template>
   <button :style="btnStyles" class="btn">
-    <span :class="`fas fa-${icon}`" />
+    <!-- icon -->
+    <span v-if="icon" :class="`${iconSet} ${icon}`" />
+
+    <!-- text -->
+    <slot></slot>
   </button>
 </template>
 
@@ -10,7 +14,13 @@ export default {
   props: {
     icon: {
       type: String,
-      required: true,
+    },
+    iconSet: {
+      type: String,
+      default: "fas",
+    },
+    text: {
+      type: String,
     },
     size: {
       type: Number,

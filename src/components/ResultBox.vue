@@ -17,14 +17,34 @@
       :size="4"
       :movement="-0.5"
       :font-size="1.5"
-      icon="sync"
+      icon="fa-sync"
     />
+
+    <!-- about btn -->
+    <button-item
+      @click="showModal"
+      :size="4"
+      :movement="-0.5"
+      :font-size="1.5"
+      icon="fa-question"
+    />
+    <!-- about modal -->
+    <modal-item v-if="modalVisible" @cancel="closeModal">
+      <template v-slot:header> About the app </template>
+
+      <template v-slot:body>
+        Mix three colors to create the perfect one!
+      </template>
+
+      <template v-slot:footer> <button-item icon="fa-thumbs-up" /> </template>
+    </modal-item>
   </div>
 </template>
 
 <script>
 import ButtonItem from "./shared/ButtonItem.vue";
 import FlaskItem from "./shared/FlaskItem.vue";
+import ModalItem from "./shared/ModalItem.vue";
 
 export default {
   name: "ResultsBox",
@@ -34,6 +54,9 @@ export default {
       required: true,
     },
   },
+  data: () => ({
+    modalVisible: false,
+  }),
   computed: {
     mixtureEffectFill() {
       const [redCol, greenCol, blueCol] = this.mixtures.map((item) =>
@@ -42,9 +65,18 @@ export default {
       return `rgb(${redCol}, ${greenCol}, ${blueCol})`;
     },
   },
+  methods: {
+    showModal() {
+      this.modalVisible = true;
+    },
+    closeModal() {
+      this.modalVisible = false;
+    },
+  },
   components: {
     ButtonItem,
     FlaskItem,
+    ModalItem,
   },
 };
 </script>
