@@ -29,7 +29,7 @@
       icon="fa-question"
     />
     <!-- about modal -->
-    <modal-item v-if="modalVisible" @cancel="closeModal">
+    <modal-item v-if="modalVisible" @cancel="hideModal">
       <template v-slot:header> About the app </template>
 
       <template v-slot:body>
@@ -45,6 +45,7 @@
 import ButtonItem from "./shared/ButtonItem.vue";
 import FlaskItem from "./shared/FlaskItem.vue";
 import ModalItem from "./shared/ModalItem.vue";
+import modalMixin from "../mixins/ModalMixin.js";
 
 export default {
   name: "ResultsBox",
@@ -54,23 +55,13 @@ export default {
       required: true,
     },
   },
-  data: () => ({
-    modalVisible: false,
-  }),
+  mixins: [modalMixin],
   computed: {
     mixtureEffectFill() {
       const [redCol, greenCol, blueCol] = this.mixtures.map((item) =>
         Math.floor(item.amount * 2.5)
       );
       return `rgb(${redCol}, ${greenCol}, ${blueCol})`;
-    },
-  },
-  methods: {
-    showModal() {
-      this.modalVisible = true;
-    },
-    closeModal() {
-      this.modalVisible = false;
     },
   },
   components: {
