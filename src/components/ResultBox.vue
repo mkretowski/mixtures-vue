@@ -11,6 +11,8 @@
       :buttonsVisible="false"
       :color="mixtureEffectFill"
     />
+
+    <p v-text="mixtureEffectFill" />
     <!-- refresh btn -->
     <button-item
       @click="$emit('refresh')"
@@ -28,6 +30,16 @@
       :font-size="1.5"
       icon="pi-question"
     />
+
+    <!-- share btn -->
+    <router-link :to="resultColor"
+      ><button-item
+        :size="4"
+        :movement="-0.5"
+        :font-size="1.5"
+        icon="pi-share-alt"
+    /></router-link>
+
     <!-- about modal -->
     <modal-item v-if="modalVisible" @cancel="hideModal">
       <template v-slot:header> About the app </template>
@@ -62,6 +74,12 @@ export default {
         Math.floor(item.amount * 2.5)
       );
       return `rgb(${redCol}, ${greenCol}, ${blueCol})`;
+    },
+    resultColor() {
+      const [redCol, greenCol, blueCol] = this.mixtures.map((item) =>
+        Math.floor(item.amount * 2.5)
+      );
+      return `/color/${redCol}/${greenCol}/${blueCol}`;
     },
   },
   components: {
