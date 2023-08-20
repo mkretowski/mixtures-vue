@@ -1,11 +1,16 @@
 <template>
-  <div class="flask" :style="flaskStyle">
+  <div
+    class="flask animate__animated"
+    :style="flaskStyle"
+    :class="{ animate__shakeY: isAnimated }"
+    @animationend="isAnimated = false"
+  >
     <!-- decrement btn -->
     <button-item
       v-if="buttonsVisible"
       class="flask__btn flask__btn--left"
       icon="pi-arrow-down"
-      @click="$emit('decrement')"
+      @click="decrement"
     />
 
     <div :class="fillClasses" :style="fillStyle" />
@@ -16,7 +21,7 @@
       class="flask__btn flask__btn--right"
       icon="pi-arrow-up"
       :movement="-0.5"
-      @click="$emit('increment')"
+      @click="increment"
     />
   </div>
 </template>
@@ -47,6 +52,19 @@ export default {
     buttonsVisible: {
       type: Boolean,
       default: true,
+    },
+  },
+  data: () => ({
+    isAnimated: false,
+  }),
+  methods: {
+    increment() {
+      this.isAnimated = true;
+      this.$emit("increment");
+    },
+    decrement() {
+      this.isAnimated = true;
+      this.$emit("decrement");
     },
   },
   computed: {

@@ -50,8 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .btn {
-  background-color: #9a9a9a;
-  background-image: linear-gradient(0deg, #9a9a9a 0%, #e8fdff 100%);
+  background-image: linear-gradient(0deg, $color-btn 0%, #e8fdff 100%);
   border: none;
   border-radius: 50%;
   cursor: pointer;

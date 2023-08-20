@@ -6,7 +6,13 @@
       <!-- header -->
       <app-header />
       <!-- router view -->
-      <router-view />
+      <router-view>
+        <template v-slot="{ Component }">
+          <slide-fade-animation class="animate__faster">
+            <component :is="Component" />
+          </slide-fade-animation>
+        </template>
+      </router-view>
     </div>
   </div>
 </template>
@@ -16,12 +22,15 @@ import "./styles/global.scss";
 import AppHeader from "./components/AppHeader";
 import ColorMixin from "./components/ColorMixin";
 import AppMenu from "./components/AppMenu.vue";
+import SlideFadeAnimation from "./components/shared/SlideFadeAnimation.vue";
+
 export default {
   name: "App",
   components: {
     AppHeader,
     ColorMixin,
     AppMenu,
+    SlideFadeAnimation,
   },
 };
 </script>

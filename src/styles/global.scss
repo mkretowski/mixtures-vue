@@ -1,21 +1,21 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  background: #f2f8ff;
-  color:  #000000;
+	font-family: $font-text;
+	font-size: $base-size;
+	background: $color-light;
+	color: $color-dark;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 p {
-  font-size: 1rem;
-  color: #637892;
-  padding: 0 1rem;
+	font-size: 1rem;
+	color: #637892;
+	padding: 0 1rem;
 }
