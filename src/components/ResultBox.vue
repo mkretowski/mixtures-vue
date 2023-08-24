@@ -13,6 +13,8 @@
     />
 
     <p v-text="mixtureEffectFill" />
+    <p v-text="`There are ${colorsAmount} colors in your pocket!`" />
+
     <!-- refresh btn -->
     <button-item
       @click="$emit('refresh')"
@@ -40,6 +42,16 @@
         icon="pi-share-alt"
     /></router-link>
 
+    <!-- add color btn -->
+    <router-link :to="resultColor"
+      ><button-item
+        :size="4"
+        :movement="-0.5"
+        :font-size="1.5"
+        icon="pi-pencil"
+        @click="saveColor"
+    /></router-link>
+
     <!-- about modal -->
     <fade-animation>
       <modal-item v-if="modalVisible" @cancel="hideModal">
@@ -61,6 +73,7 @@ import FlaskItem from "./shared/FlaskItem.vue";
 import ModalItem from "./shared/ModalItem.vue";
 import modalMixin from "../mixins/ModalMixin.js";
 import FadeAnimation from "./shared/FadeAnimation.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "ResultsBox",
@@ -71,7 +84,14 @@ export default {
     },
   },
   mixins: [modalMixin],
+  methods: {
+    ...mapActions(["addColor"]),
+    saveColor() {
+      this.addColor(this.mixtures);
+    },
+  },
   computed: {
+    ...mapGetters({ colorsAmount: "RGBColorsLength" }),
     mixtureEffectFill() {
       const [redCol, greenCol, blueCol] = this.mixtures.map((item) =>
         Math.floor(item.amount * 2.5)

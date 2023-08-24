@@ -15,40 +15,27 @@
 <script>
 import MixturesList from "./MixturesList";
 import ResultBox from "./ResultBox";
-
+import { mapGetters, mapActions } from "vuex";
+import { mapMutations } from "vuex";
 export default {
   name: "ColorMixin",
-  data: () => ({
-    mixtures: [
-      {
-        variant: "red",
-        amount: 20,
-      },
-      {
-        variant: "green",
-        amount: 70,
-      },
-      {
-        variant: "blue",
-        amount: 40,
-      },
-    ],
-  }),
+  computed: {
+    ...mapGetters({ mixtures: "MixturesAmount" }),
+  },
   methods: {
+    ...mapMutations({
+      incrMutation: "INCREMENT_COLOR",
+      decrMutation: "DECREMENT_COLOR",
+      refreshMutation: "REFRESH_MIXTURES",
+    }),
     increment(index) {
-      const mixture = this.mixtures[index];
-      if (mixture.amount === 100) return false;
-      mixture.amount++;
+      this.incrMutation(index);
     },
-
     decrement(index) {
-      const mixture = this.mixtures[index];
-      if (mixture.amount === 0) return false;
-      mixture.amount--;
+      this.decrMutation(index);
     },
-
     refresh() {
-      this.mixtures = this.mixtures.map((item) => ({ ...item, amount: 50 }));
+      this.refreshMutation();
     },
   },
   components: {

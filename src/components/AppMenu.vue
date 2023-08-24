@@ -23,7 +23,12 @@ export default {
       {
         label: "About",
         icon: "pi pi-fw pi-info-circle",
-        to: "about",
+        to: "/about",
+      },
+      {
+        label: "My Colors",
+        icon: "pi pi-fw pi-palette",
+        to: "/my-colors",
       },
     ],
   }),
@@ -34,6 +39,5 @@ export default {
 .menu__bar {
   border-radius: 1rem;
   box-shadow: 0 20px 40px 0 rgba(107, 154, 212, 0.3);
-  overflow: hidden;
 }
 </style>

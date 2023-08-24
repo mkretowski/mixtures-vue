@@ -23,6 +23,15 @@
       :movement="-0.5"
       @click="increment"
     />
+
+    <!-- remove btn -->
+    <button-item
+      v-if="removeBtnVisible"
+      class="flask__btn flask__btn--center"
+      icon="pi-trash"
+      :movement="-0.5"
+      @click="remove"
+    />
   </div>
 </template>
 
@@ -53,6 +62,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    removeBtnVisible: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     isAnimated: false,
@@ -65,6 +78,10 @@ export default {
     decrement() {
       this.isAnimated = true;
       this.$emit("decrement");
+    },
+    remove() {
+      this.isAnimated = true;
+      this.$emit("remove");
     },
   },
   computed: {
@@ -151,6 +168,10 @@ export default {
 
     &--left {
       left: 1rem;
+    }
+    &--center {
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }
